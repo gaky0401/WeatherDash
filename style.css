@@ -2,5 +2,5 @@
     display: flex;
     font-size: 46px;
     top: 20px;
-    align-content: center;
+    justify-content: center;
 }
