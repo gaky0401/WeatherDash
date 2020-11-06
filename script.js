@@ -15,17 +15,20 @@ $("#city-btn").on("click", function () {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+  
     
-    let humidity = response.main.humidity;
-    let humidityP = $("<p>")
-    humidityP.text(humidity)
+    let currentHumidity = response.main.humidity;
+    $("#current-humidity").append(currentHumidity)
+ /*   let humidityP = $("<p>")
+    humidityP.text(humidityCurrent)
     $("#humidity").append(humidityP);
   });
-
+*/
   $.ajax({
     url: fiveDayURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
   });
+});
 });
