@@ -4,3 +4,8 @@
     top: 20px;
     justify-content: center;
 }
+
+#current-city-name {
+    font-size: 26px;
+    font-weight: bold;
+}
