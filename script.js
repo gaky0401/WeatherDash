@@ -15,6 +15,13 @@ $("#city-btn").on("click", function () {
     method: "GET",
   }).then(function (response) {
     console.log(response);
+    // call the date and reformat if necessary
+
+    // make icons for weather
+    let currentCondition = response.weather[0].icon;
+    $("#current-weather-icon").attr("src", "http://openweathermap.org/img/wn/" + currentCondition + "@2x.png");
+  
+
     // call the city and append it to the html
     let currentCity = response.name;
     $("#current-city-name").append(currentCity);
@@ -49,55 +56,65 @@ $("#city-btn").on("click", function () {
     }).then(function (response) {
       console.log(response);
       // add icon for day 1
-   
+    let day1Icon = response.list[7].weather[0].icon;
+    $("#day-1-icon").attr("src", "http://openweathermap.org/img/wn/" + day1Icon + "@2x.png");
+
       // add temp and humidity for day 1
-    let day1Kelvin = response.list[0].main.temp;
+    let day1Kelvin = response.list[7].main.temp;
     let day1F = Math.floor((day1Kelvin - 273.15) * 1.8) + 32;
     $("#day-1-temp").append(day1F);
     
-    let day1Humidity = response.list[0].main.humidity;
+    let day1Humidity = response.list[7].main.humidity;
     $("#day-1-humidity").append(day1Humidity);
 
     // add icon for day 2
+    let day2Icon = response.list[15].weather[0].icon;
+    $("#day-2-icon").attr("src", "http://openweathermap.org/img/wn/" + day2Icon + "@2x.png");
 
     // add temp & humidity for day 2
-    let day2Kelvin = response.list[1].main.temp;
+    let day2Kelvin = response.list[15].main.temp;
     let day2F = Math.floor((day2Kelvin - 273.15) * 1.8) + 32;
     $("#day-2-temp").append(day2F);
 
-    let day2Humidity = response.list[1].main.humidity;
+    let day2Humidity = response.list[15].main.humidity;
     $("#day-2-humidity").append(day2Humidity);
 
     // add icon for day 3
+    let day3Icon = response.list[23].weather[0].icon;
+    $("#day-3-icon").attr("src", "http://openweathermap.org/img/wn/" + day3Icon + "@2x.png");
 
     // add temp & humidity for day 3
-    let day3Kelvin = response.list[2].main.temp;
+    let day3Kelvin = response.list[23].main.temp;
     let day3F = Math.floor((day3Kelvin - 273.15) * 1.8) + 32;
     $("#day-3-temp").append(day3F);
 
-    let day3Humidity = response.list[2].main.humidity;
+    let day3Humidity = response.list[23].main.humidity;
     $("#day-3-humidity").append(day3Humidity);
 
     // add icon for day  4
+    let day4Icon = response.list[31].weather[0].icon;
+    $("#day-4-icon").attr("src", "http://openweathermap.org/img/wn/" + day4Icon + "@2x.png");
 
     // add temp & humidity for day 4
-    let day4Kelvin = response.list[3].main.temp;
+    let day4Kelvin = response.list[31].main.temp;
     let day4F = Math.floor((day4Kelvin - 273.15) * 1.8) + 32;
     $("#day-4-temp").append(day4F);
 
-    let day4Humidity = response.list[3].main.humidity;
+    let day4Humidity = response.list[31].main.humidity;
     $("#day-4-humidity").append(day4Humidity);
 
     // add icon for day 5
+    let day5Icon = response.list[39].weather[0].icon;
+    $("#day-5-icon").attr("src", "http://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
 
     // add temp & humidity for day 5
-    let day5Kelvin = response.list[4].main.temp;
+    let day5Kelvin = response.list[39].main.temp;
     let day5F = Math.floor((day5Kelvin - 273.15) * 1.8) + 32;
     $("#day-5-temp").append(day5F);
 
-    let day5Humidity = response.list[4].main.humidity;
+    let day5Humidity = response.list[39].main.humidity;
     $("#day-5-humidity").append(day5Humidity);
-    
+
 
   });
 });
