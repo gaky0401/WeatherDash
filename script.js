@@ -6,14 +6,18 @@ $("#city-btn").on("click", function () {
   cityName +
   "&appid=ab71125de5aff9fb594cb0a9e4c3dade";
     let fiveDayURL="http://api.openweathermap.org/data/2.5/forecast?q=" +
-    cityName + "&appid=ab71125de5aff9fb594cb0a9e4c3dade";
-   // let UVIndexURL="http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid=ab71125de5aff9fb594cb0a9e4c3dade"
-  //make a call inside ajax current to get lat and lon to concatenate into UVindexURL
+    cityName + "&appid=ab71125de5aff9fb594cb0a9e4c3dade"
+  // storing city name to local storage
+  localStorage.setItem("city", cityName);
+  // get item from storage
+  //let cityStorage = localstorage.getItem("city");
+  // make new list with jquery and add city to list
+
   $.ajax({
     url: currentURL,
     method: "GET",
   }).then(function (response) {
-    console.log(response);
+    //console.log(response);
     // call the date and reformat if necessary
    
     let todayDate = new Date();
@@ -52,7 +56,7 @@ $("#city-btn").on("click", function () {
       url: UVIndexURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
+      //console.log(response);
       let currentUV = response.value;
       $("#current-UV-index").text("");
       $("#current-UV-index").append(currentUV);
@@ -72,7 +76,7 @@ $("#city-btn").on("click", function () {
       url: fiveDayURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response);
+      //console.log(response);
 
     // day 1 date
      let dayPlusOne = new Date(todayDate.getTime() + 86400000);
