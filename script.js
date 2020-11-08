@@ -15,17 +15,14 @@ $("#city-btn").on("click", function () {
   }).then(function (response) {
     console.log(response);
     // call the date and reformat if necessary
-    //let currentMS = response.dt;
-    //let currentDate = Date(currentMS);
-    //console.log(currentDate.toLocaleDateString());
+   
     let todayDate = new Date();
     $("#current-date").append(todayDate.toLocaleDateString());
-    console.log(todayDate);
+
     // make icons for weather
     let currentCondition = response.weather[0].icon;
     $("#current-weather-icon").attr("src", "http://openweathermap.org/img/wn/" + currentCondition + "@2x.png");
   
-
     // call the city and append it to the html
     let currentCity = response.name;
     $("#current-city-name").append(currentCity);
@@ -52,6 +49,16 @@ $("#city-btn").on("click", function () {
       console.log(response);
       let currentUV = response.value;
       $("#current-UV-index").append(currentUV);
+      
+      //add color to UV Index based on value
+    // 0-3 is favorable (green); 3.01 to 6 is moderate (orange); 6.01 + is severe (red) 
+      if (currentUV <= 3) {
+        $("#current-UV-index").css("background-color", "#6dd45f");
+      } else if (currentUV >= 3.01 && currentUV <= 6) {
+        $("#current-UV-index").css("background-color", "#f2bd0f");
+      } else {
+        $("#current-UV-index").css("background-color", "#fa2a05");
+      }    
     });
 
     $.ajax({
