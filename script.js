@@ -1,11 +1,11 @@
 $("#city-btn").on("click", function () {
-    event.preventDefault();;
+    event.preventDefault();
     let cityName = $("#city-search").val().trim();
     let currentURL =
-  "http://api.openweathermap.org/data/2.5/weather?q=" +
+  "https://api.openweathermap.org/data/2.5/weather?q=" +
   cityName +
   "&appid=ab71125de5aff9fb594cb0a9e4c3dade";
-    let fiveDayURL="http://api.openweathermap.org/data/2.5/forecast?q=" +
+    let fiveDayURL="https://api.openweathermap.org/data/2.5/forecast?q=" +
     cityName + "&appid=ab71125de5aff9fb594cb0a9e4c3dade"
   // storing city name to local storage
   localStorage.setItem("city", cityName);
@@ -26,7 +26,7 @@ $("#city-btn").on("click", function () {
 
     // make icons for weather
     let currentCondition = response.weather[0].icon;
-    $("#current-weather-icon").attr("src", "http://openweathermap.org/img/wn/" + currentCondition + "@2x.png");
+    $("#current-weather-icon").attr("src", "https://openweathermap.org/img/wn/" + currentCondition + "@2x.png");
   
     // call the city and append it to the html
     let currentCity = response.name;
@@ -51,7 +51,7 @@ $("#city-btn").on("click", function () {
     // adding UV functionality
     let lat = response.coord.lat;
     let lon = response.coord.lon;
-    let UVIndexURL="http://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=ab71125de5aff9fb594cb0a9e4c3dade"
+    let UVIndexURL="https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=ab71125de5aff9fb594cb0a9e4c3dade"
     $.ajax({
       url: UVIndexURL,
       method: "GET",
@@ -85,7 +85,7 @@ $("#city-btn").on("click", function () {
 
       // add icon for day 1
     let day1Icon = response.list[7].weather[0].icon;
-    $("#day-1-icon").attr("src", "http://openweathermap.org/img/wn/" + day1Icon + "@2x.png");
+    $("#day-1-icon").attr("src", "https://openweathermap.org/img/wn/" + day1Icon + "@2x.png");
 
       // add temp and humidity for day 1
     let day1Kelvin = response.list[7].main.temp;
@@ -104,7 +104,7 @@ $("#city-btn").on("click", function () {
 
     // add icon for day 2
     let day2Icon = response.list[15].weather[0].icon;
-    $("#day-2-icon").attr("src", "http://openweathermap.org/img/wn/" + day2Icon + "@2x.png");
+    $("#day-2-icon").attr("src", "https://openweathermap.org/img/wn/" + day2Icon + "@2x.png");
 
     // add temp & humidity for day 2
     let day2Kelvin = response.list[15].main.temp;
@@ -123,7 +123,7 @@ $("#city-btn").on("click", function () {
 
     // add icon for day 3
     let day3Icon = response.list[23].weather[0].icon;
-    $("#day-3-icon").attr("src", "http://openweathermap.org/img/wn/" + day3Icon + "@2x.png");
+    $("#day-3-icon").attr("src", "https://openweathermap.org/img/wn/" + day3Icon + "@2x.png");
 
     // add temp & humidity for day 3
     let day3Kelvin = response.list[23].main.temp;
@@ -142,7 +142,7 @@ $("#city-btn").on("click", function () {
 
     // add icon for day  4
     let day4Icon = response.list[31].weather[0].icon;
-    $("#day-4-icon").attr("src", "http://openweathermap.org/img/wn/" + day4Icon + "@2x.png");
+    $("#day-4-icon").attr("src", "https://openweathermap.org/img/wn/" + day4Icon + "@2x.png");
 
     // add temp & humidity for day 4
     let day4Kelvin = response.list[31].main.temp;
@@ -161,7 +161,7 @@ $("#city-btn").on("click", function () {
 
     // add icon for day 5
     let day5Icon = response.list[39].weather[0].icon;
-    $("#day-5-icon").attr("src", "http://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
+    $("#day-5-icon").attr("src", "https://openweathermap.org/img/wn/" + day5Icon + "@2x.png");
 
     // add temp & humidity for day 5
     let day5Kelvin = response.list[39].main.temp;
