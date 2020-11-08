@@ -9,3 +9,32 @@
     font-size: 26px;
     font-weight: bold;
 }
+
+#current-date {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.currentWeather {
+    background-color: #B0E0E6;
+}
+
+.oneFC {
+    background-color: #fff982;
+}
+
+.twoFC {
+    background-color: #fff36b;
+}
+
+.threeFC {
+    background-color: #ffed54;
+}
+
+.fourFC {
+    background-color: #ffe945;
+}
+
+.fiveFC {
+    background-color: #ffe32e;
+}

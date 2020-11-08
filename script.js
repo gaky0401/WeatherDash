@@ -1,6 +1,5 @@
 $("#city-btn").on("click", function () {
     event.preventDefault();
-    console.log("clicked");
     let cityName = $("#city-search").val().trim();
     let currentURL =
   "http://api.openweathermap.org/data/2.5/weather?q=" +
@@ -16,7 +15,12 @@ $("#city-btn").on("click", function () {
   }).then(function (response) {
     console.log(response);
     // call the date and reformat if necessary
-
+    //let currentMS = response.dt;
+    //let currentDate = Date(currentMS);
+    //console.log(currentDate.toLocaleDateString());
+    let todayDate = new Date();
+    $("#current-date").append(todayDate.toLocaleDateString());
+    console.log(todayDate);
     // make icons for weather
     let currentCondition = response.weather[0].icon;
     $("#current-weather-icon").attr("src", "http://openweathermap.org/img/wn/" + currentCondition + "@2x.png");
@@ -55,6 +59,11 @@ $("#city-btn").on("click", function () {
       method: "GET",
     }).then(function (response) {
       console.log(response);
+
+    // day 1 date
+     let dayPlusOne = new Date(todayDate.getTime() + 86400000);
+     $("#day-1-date").append(dayPlusOne.toLocaleDateString());
+
       // add icon for day 1
     let day1Icon = response.list[7].weather[0].icon;
     $("#day-1-icon").attr("src", "http://openweathermap.org/img/wn/" + day1Icon + "@2x.png");
@@ -66,6 +75,10 @@ $("#city-btn").on("click", function () {
     
     let day1Humidity = response.list[7].main.humidity;
     $("#day-1-humidity").append(day1Humidity);
+    
+    // day 2 date
+    let dayPlusTwo = new Date(todayDate.getTime() + 86400000 + 86400000);
+    $("#day-2-date").append(dayPlusTwo.toLocaleDateString());
 
     // add icon for day 2
     let day2Icon = response.list[15].weather[0].icon;
@@ -78,6 +91,10 @@ $("#city-btn").on("click", function () {
 
     let day2Humidity = response.list[15].main.humidity;
     $("#day-2-humidity").append(day2Humidity);
+    
+    // day 3 date
+    let dayPlusThree = new Date(todayDate.getTime() + 86400000 + 86400000 + 86400000);
+    $("#day-3-date").append(dayPlusThree.toLocaleDateString());
 
     // add icon for day 3
     let day3Icon = response.list[23].weather[0].icon;
@@ -90,6 +107,10 @@ $("#city-btn").on("click", function () {
 
     let day3Humidity = response.list[23].main.humidity;
     $("#day-3-humidity").append(day3Humidity);
+    
+    // day 4 date
+    let dayPlusFour = new Date(todayDate.getTime() + 86400000 + 86400000 + 86400000 + 86400000);
+    $("#day-4-date").append(dayPlusFour.toLocaleDateString());
 
     // add icon for day  4
     let day4Icon = response.list[31].weather[0].icon;
@@ -102,6 +123,10 @@ $("#city-btn").on("click", function () {
 
     let day4Humidity = response.list[31].main.humidity;
     $("#day-4-humidity").append(day4Humidity);
+    
+    // day 5 date
+    let dayPlusFive = new Date(todayDate.getTime() + 86400000 + 86400000 + 86400000 + 86400000 + 86400000);
+    $("#day-5-date").append(dayPlusFive.toLocaleDateString());
 
     // add icon for day 5
     let day5Icon = response.list[39].weather[0].icon;
